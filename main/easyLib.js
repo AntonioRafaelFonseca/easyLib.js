@@ -237,7 +237,10 @@ function vector(x, y) {
 
 
 //---------------time--------------
-window.addEventListener('load', onload)
+window.addEventListener('load', () => {
+  start();
+  onload();
+});
 async function sleepFor(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -249,4 +252,11 @@ function setFPS(fps) {
   interval = 1000 / fps
   clearInterval(intervalID);
   intervalID = setInterval(main, interval)
+}
+
+
+function start()
+{
+  let interval = 1000 / 30;
+  let intervalID = setInterval(main, interval)
 }
