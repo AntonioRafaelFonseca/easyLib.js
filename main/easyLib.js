@@ -237,7 +237,7 @@ function vector(x, y) {
 
 
 //---------------time--------------
-window.onload = onload();
+window.addEventListener('load', onload)
 async function sleepFor(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

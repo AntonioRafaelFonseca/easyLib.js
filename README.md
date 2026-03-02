@@ -14,9 +14,12 @@ License: MIT
 2)  In your HTML file add:
 
 ``` html
-<script src="easyLib.js"></script>
+<script src="easyLib.js"></script> or <script src="https://easylibjs.vercel.app/main/easyLib.js"></script>
+
 <script src="script.js"></script>
 ```
+_*Note that __script.js__ is the script that you are going to write_
+
 
 3)  Your main script MUST start like this:
 
@@ -251,7 +254,7 @@ Licença: MIT
 2)  No HTML adiciona:
 
 ``` html
-<script src="easyLib.js"></script>
+<script src="easyLib.js"></script> ou <script src="https://easylibjs.vercel.app/main/easyLib.js"></script>
 <script src="script.js"></script>
 ```
 
