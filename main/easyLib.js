@@ -245,8 +245,6 @@ async function sleepFor(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let interval = 1000 / 30;
-let intervalID = setInterval(main, interval)
 
 function setFPS(fps) {
   interval = 1000 / fps
