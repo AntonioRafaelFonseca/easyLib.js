@@ -218,8 +218,8 @@ function vector(x, y) {
 
 //---------------time--------------
 window.addEventListener('load', () => {
-  start();
   onload();
+  start();
 });
 async function sleepFor(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
