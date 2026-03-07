@@ -4,48 +4,29 @@
  * Released under the MIT License
  */
 
-Object.defineProperty(globalThis, 'ctx', {
-  value: undefined,
-  writable: true,
-  configurable: true
-})
-Object.defineProperty(globalThis, 'canvas', {
-  value: undefined,
-  writable: true,
-  configurable: true
-})
-
-let canvasWidth;
-let canvasHeight;
+globalThis.canvasWidth = undefined
+globalThis.canvasHeight = undefined
 
 function createCanvas(width, height, parent) {
-  parent.innerHTML = `<canvas class="mainCanvas" width="${width}px" height="${height}px"></canvas>` + parent.innerHTML
+  parent.innerHTML = `<canvas class="mainCanvas" width="${width}" height="${height}"></canvas>` + parent.innerHTML
 
-  Object.defineProperty(globalThis, 'canvas', {
-    value: document.querySelector('.mainCanvas'),
-    writable: true,
-    configurable: true
-  })
-  Object.defineProperty(globalThis, 'ctx', {
-    value: ctx = canvas.getContext("2d"),
-    writable: false,
-    configurable: false
-  })
+  globalThis.canvas = document.querySelector('.mainCanvas')
+  globalThis.ctx = canvas.getContext("2d")
 
   ctx.imageSmoothingEnabled = false
   canvasWidth = width;
   canvasHeight = height;
-  canvas.addEventListener('mousedown', () => { press = true; mouse.pressed = press })
-  canvas.addEventListener('mouseup', () => { press = false; mouse.pressed = press })
-  canvas.addEventListener('mousemove', m => { updateMouse(m) })
+  canvas.onmousemove = updateMouse
+  canvas.onmousedown = () => { press = true; mouse.pressed = press }
+  canvas.onmouseup = () => { press = false; mouse.pressed = press }
 }
 
 //-----------------drawings------------------
 function fillBackground(color) {
-  drawSquare(0, 0, canvasWidth, canvasHeight, null, color)
+  drawRect(0, 0, canvasWidth, canvasHeight, null, color)
 }
 
-function drawSquare(x, y, w, h, border = null, fill = null) {
+function drawRect(x, y, w, h, border = null, fill = null) {
   if (border) {
     ctx.strokeStyle = `rgba(${border[0]}, ${border[1]}, ${border[2]}, ${border[3]})`
   }
@@ -82,7 +63,6 @@ function drawLine(x1, y1, x2, y2, border = null) {
     ctx.stroke()
   }
 }
-
 //custom shapes----------------------------------------------------------------|
 
 function startShape() {
