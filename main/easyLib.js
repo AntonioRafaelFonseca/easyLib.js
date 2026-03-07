@@ -232,9 +232,10 @@ function setFPS(fps) {
   intervalID = setInterval(main, interval)
 }
 
+let intervalID;
+let interval;
 
-function start()
-{
-  let interval = 1000 / 30;
-  let intervalID = setInterval(main, interval)
+function start(){
+  interval = 1000 / 30;
+  intervalID = setInterval(main, interval);
 }
