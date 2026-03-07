@@ -8,17 +8,23 @@ globalThis.canvasWidth = undefined
 globalThis.canvasHeight = undefined
 
 function createCanvas(width, height, parent) {
-  parent.innerHTML = `<canvas class="mainCanvas" width="${width}" height="${height}"></canvas>` + parent.innerHTML
+  parent.innerHTML = '' // limpa
+  const canvas = document.createElement('canvas')
+  canvas.className = 'mainCanvas'
+  canvas.width = width
+  canvas.height = height
+  parent.appendChild(canvas)
 
-  globalThis.canvas = document.querySelector('.mainCanvas')
-  globalThis.ctx = canvas.getContext("2d")
-
+  globalThis.canvas = canvas
+  globalThis.ctx = canvas.getContext('2d')
   ctx.imageSmoothingEnabled = false
-  canvasWidth = width;
-  canvasHeight = height;
+
   canvas.onmousemove = updateMouse
   canvas.onmousedown = () => { press = true; mouse.pressed = press }
   canvas.onmouseup = () => { press = false; mouse.pressed = press }
+
+  globalThis.canvasWidth = width
+  globalThis.canvasHeight = height
 }
 
 //-----------------drawings------------------
